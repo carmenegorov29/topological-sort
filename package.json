@@ -1,6 +1,6 @@
 {
   "name": "topological-sort",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Orders dependencies and reports any cycles by name.",
   "type": "module",
   "main": "src/index.js",
