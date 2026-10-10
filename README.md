@@ -24,3 +24,10 @@ I needed a topological sort for build-order and config-resolution tasks where (a
 ## Edge case worth knowing
 
 If multiple valid orders exist, the library does not consider them equally — it commits to the order implied by your input. Sort your input (keys and each dependency list) if you want a different deterministic result. Duplicates in a dependency list are left in place rather than deduplicated silently; a self-edge (`a: ['a']`) is a cycle and is reported as such.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
